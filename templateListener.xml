@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/2019/templateListener.xsd">
+	<import>
+		<templatelistener name="entryInfractionJS">
+			<environment>user</environment>
+			<templatename>entry</templatename>
+			<eventname>additionalJavascript</eventname>
+			<templatecode><![CDATA[{include file='__infractionJavascript' application='show'}]]></templatecode>
+		</templatelistener>
+		
+		<templatelistener name="entryButtons">
+			<environment>user</environment>
+			<templatename>entry</templatename>
+			<eventname>entryButtons</eventname>
+			<templatecode><![CDATA[{if MODULE_USER_INFRACTION && $userProfile->userID && $__wcf->session->getPermission('mod.infraction.warning.canWarn') && !$userProfile->getPermission('mod.infraction.warning.immune')}<li class="jsWarnEntry jsOnly" data-object-id="{@$entry->entryID}" data-user-id="{@$userProfile->userID}"><a href="#" title="{lang}wcf.infraction.warn{/lang}" class="button jsTooltip"><span class="icon icon16 fa-legal"></span> <span class="invisible">{lang}wcf.infraction.warn{/lang}</span></a></li>{/if}]]></templatecode>
+		</templatelistener>
+	</import>
+</data>
